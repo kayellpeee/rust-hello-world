@@ -17,16 +17,23 @@ pub fn longest_run(run: &str) -> [usize;2] {
     let mut iter = run.chars().enumerate().peekable();
 
     while let Some(tuple) = iter.next() {
+        // if current letter is same as next, we are in a run, so we continue
         if iter.peek() != None {
             inrun = tuple.1 == iter.peek().unwrap().1;
         }
-        if !inrun {
+        // at the end of a run, check how long it is & update result
+        // alternatively, check if peek() == None before exiting loop
+        if !inrun || iter.peek() == None {
             start = tempstart;
             end = tuple.0;
             tempstart = tuple.0 + 1;
             if result[1] - result[0] < end - start {
+                println!("updating result from {:?}", result);
                 result = [start, end];
+                println!("to {:?}", result);
             }
+            println!("No longer in a run D:\tstart {:?} end {:?} result {:?} char {:?}", start, end,
+                     result, tuple.1);
         }
     }
 
