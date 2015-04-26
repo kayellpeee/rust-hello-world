@@ -33,11 +33,23 @@ pub fn longest_run(run: &str) -> [usize;2] {
     result
 }
 
-#[test]
-fn basic_cases() {
-    assert_eq!(longest_run("aabbc"), [0, 1]);
-    assert_eq!(longest_run("abbbcc"), [1, 3]);
-    assert_eq!(longest_run("aabbc"), [0, 1]);
-    assert_eq!(longest_run("aabbcccc"), [4, 7]);
-    assert_eq!(longest_run("abcd"), [0, 0]);
+#[cfg(test)]
+mod test {
+    use super::longest_run;
+    #[test]
+    fn it_works() {
+        assert_eq!(longest_run("aabbc"), [0, 1]);
+    }
+    #[test]
+    fn run_in_middle() {
+        assert_eq!(longest_run("abbbcc"), [1, 3]);
+    }
+    #[test]
+    fn run_at_end() { 
+        assert_eq!(longest_run("aabbcccc"), [4, 7]);
+    }
+    #[test]
+    fn equal_runs() {
+        assert_eq!(longest_run("abcd"), [0, 0]);
+    }
 }
