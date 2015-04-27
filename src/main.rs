@@ -1,16 +1,5 @@
-/**
-  * Write a function that, given a string, Finds the longest run of characters
-  * and returns an array containing the start and end indices of that run. If
-  * there are two runs of equal length, return the first one. For example:
-  * longestRun("abbbcc") // [1, 3]
-  * longestRun("aabbc")  // [0, 1]
-  * longestRun("abcd")   // [0, 0]
-  * Try your function with long, random strings to make sure it handles large
-  * inputs well.
-  **/
-fn main() {
-}
-
+/// A function that, given a string, finds the longest run of characters
+/// and returns an array containing the start and end indices of that run.
 pub fn longest_run(run: &str) -> [usize;2] {
     let mut result: [usize; 2] = [0, 0];
     let mut inrun: bool = true;
@@ -38,6 +27,20 @@ pub fn longest_run(run: &str) -> [usize;2] {
     }
     result
 }
+
+fn main() {
+}
+
+/// # Examples
+/// ```
+/// # use hello_world::longest_run;
+/// longest_run("abbbcc") // [1, 3]
+/// ```
+/// If there are two runs of equal length, return the first one
+/// ```
+/// longest_run("aabbc")  // [0, 1]
+/// longest_run("abcd")   // [0, 0]
+/// ```
 
 #[cfg(test)]
 mod test {
